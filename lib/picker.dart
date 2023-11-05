@@ -220,12 +220,14 @@ class Picker {
 
   /// show dialog picker
   Future<List<int>?> showDialog(BuildContext context,
-      {bool barrierDismissible = true,
+      {Color? barrierColor,
+      bool barrierDismissible = true,
       Color? backgroundColor,
       PickerWidgetBuilder? builder,
       Key? key}) {
     return Dialog.showDialog<List<int>>(
         context: context,
+        barrierColor: barrierColor,
         barrierDismissible: barrierDismissible,
         builder: (BuildContext context) {
           final actions = <Widget>[];
@@ -479,8 +481,7 @@ class PickerWidgetState<T> extends State<_PickerWidget> {
       child: picker.title == null
           ? SizedBox()
           : DefaultTextStyle(
-              style: (theme!.textTheme.headline6 ?? theme!.textTheme.titleLarge)
-                      ?.copyWith(
+              style: theme!.textTheme.headline6?.copyWith(
                     fontSize: Picker.DefaultTextSize,
                   ) ??
                   TextStyle(fontSize: Picker.DefaultTextSize),
