@@ -228,6 +228,7 @@ class _Dial extends StatefulWidget {
 class _DialState extends State<_Dial> with SingleTickerProviderStateMixin {
   late final double? _upperBoundAngle;
   late final double? _lowerBoundAngel;
+  static const double _kEpsilon = 1e-15;
 
   @override
   void initState() {
@@ -256,7 +257,7 @@ class _DialState extends State<_Dial> with SingleTickerProviderStateMixin {
     _baseUnitValue = _baseUnitHand();
 
     _upperBoundAngle = widget.upperBound != null
-        ? _kPiByTwo - _turningAngleFactor(widget.upperBound) * _kTwoPi
+        ? _kPiByTwo - _turningAngleFactor(widget.upperBound) * _kTwoPi - _kEpsilon
         : null;
     _lowerBoundAngel = widget.lowerBound != null
         ? _kPiByTwo - _turningAngleFactor(widget.lowerBound) * _kTwoPi
